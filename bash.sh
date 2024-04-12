@@ -38,7 +38,6 @@ then
 					;;
 				esac
 			done
-            break
 
 		elif [[ "$1" = "-t" ]]
 		then	
@@ -67,8 +66,50 @@ then
 					;;
 	                	esac
         		done
-            break
 		fi
+		echo ""
+		while true; do
+			Opcion=" "
+			echo -e "Usted está en la sección $Seccion, seleccione la opción que desea utilizar: \n"
+		        echo -e "\t1) Agregar información"
+        		echo -e "\t2) Buscar"
+		        echo -e "\t3) Eliminar información"
+			echo -e "\t4) Leer base de información"
+			echo -e "\t5) Menú anterior"
+			echo -e "\t6) Salir\n"
+			read -p "Opción: " Opcion
+                	echo ""
+			case $Opcion in
+                	1)
+               			read -p "Concepto: " Concepto
+                               	read -p "Definición: " Definicion
+		         	echo "[$Concepto] .- $Definicion." >> "$Archivo"
+        	                echo -e "\nSe agregó el concepto\n"
+                	        ;;
+			2)
+				if [[ -e $Archivo ]]
+				then
+					read -p "Concepto buscado: " BuscarConcepto
+					ConceptoBuscado=$(grep "^\[$BuscarConcepto\]" "$Archivo")
+					if [[ -n "$ConceptoBuscado" ]]
+					then
+						echo -e "\n$ConceptoBuscado\n"
+					else
+						echo -e "\nNo se encontró el concepto\n"
+					fi
+				else
+					echo -e "El archivo no existe\n"
+				fi
+				;;
+			*)
+				echo "Error, Opción inválida"
+				;;
+			esac
+			if [[ "$Opcion" -eq "6" ]]
+			then
+				exit 0
+			fi
+		done
 	done
 else
 	echo "Parámetro no válido"
