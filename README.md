@@ -64,3 +64,36 @@ Docker
     • sudo apt install docker-ce
     • sudo docker run hello-world
 
+##Ejecutando las pruebas
+Paso 1: Corre el bash y pon la opcion que quieres; ya sea -a o -t
+Paso 2: Escribe la opción que más te guste
+Bienvenido a la guía rápida de Agile, para continuar seleccione un tema: 
+    1) SCRUM
+    2) X.P.
+    3) Kanban
+    4) Crystal
+Opción: 
+Paso 3: Escribe la opción que más te guste
+Usted está en la sección SCRUM, selecione la opción que desea utilizar: 
+    1) Agregar información
+    2) Buscar
+    3) Eliminar información
+    4) Leer base de información
+    5) Menú anterior
+    6) Salir
+Opción: 
+Paso 4: Ya si quiere finalizar, escriba  6. 
+
+##Construido Con
+Fue construido con la terminal (bash) y visual studio 
+
+##Autores
+    • Jesus Alberto Nunez Delgadillo 348790
+    • Angelica Torres Velderrain 359628
+    • Oswaldo Valles Azpeitia 358430
+    • Emily Abril Vásquez Moreno 357623
+
+##Links
+    • GITHUB: https://github.com/Angetorrex/DesarrolloProyecto 
+    • GITLAB: https://gitlab.com/a359628/dproyecto
+    • BITBUCKET: https://bitbucket.org/angeetorrex/pdesarrollo/src/main/
