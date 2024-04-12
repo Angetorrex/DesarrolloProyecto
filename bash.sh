@@ -2,7 +2,7 @@
 
 if [[ "$#" -ne "1" ]]
 then
-	echo "Pasa un parámetro:"
+	echo "Pase un parámetro valido: -a o -t"
 elif [[ "$1" = "-a" || "$1" = "-t" ]]
 then
 	while true; do
@@ -38,7 +38,6 @@ then
 					;;
 				esac
 			done
-
 		elif [[ "$1" = "-t" ]]
 		then	
 			echo -e "Bienvenido a la guía rápida de metodologías tradicionales, para continuar seleccione un tema: \n"
@@ -89,7 +88,7 @@ then
 			2)
 				if [[ -e $Archivo ]]
 				then
-					read -p "Concepto buscado: " BuscarConcepto
+					read -p "Concepto a buscar: " BuscarConcepto
 					ConceptoBuscado=$(grep "^\[$BuscarConcepto\]" "$Archivo")
 					if [[ -n "$ConceptoBuscado" ]]
 					then
@@ -101,14 +100,41 @@ then
 					echo -e "El archivo no existe\n"
 				fi
 				;;
+    			3)
+				if [[ -e $Archivo ]]
+				then
+					read -p "Concepto a eliminar: " EliminarConcepto
+
+					if grep "^\[$EliminarConcepto\]" "$Archivo"
+					then
+						sed -i "/^\[$EliminarConcepto\]/d" "$Archivo"
+						echo -e "\nSe eliminó el concepto\n"
+					else
+						echo -e "\nCNo se ha encontrado el concepto\n"
+					fi
+				else
+					echo -e "El archivo no existe\n"
+				fi
+				;;
+			4)
+				if [[ -e $Archivo ]]
+				then 
+					cat "$Archivo"
+					echo ""
+				else
+					echo -e "El archivo no existe\n"
+				fi
+				;;
+			5)
+				:
+				;;
+			6)
+				exit 0
+				;;
 			*)
 				echo "Error, Opción inválida"
 				;;
 			esac
-			if [[ "$Opcion" -eq "6" ]]
-			then
-				exit 0
-			fi
 		done
 	done
 else
